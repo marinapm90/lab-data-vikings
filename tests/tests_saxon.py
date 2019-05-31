@@ -41,16 +41,13 @@ class TestSaxon(unittest.TestCase):
         self.assertEqual(self.saxon.health, self.health - 1)
 
     def testReceiveDamageString45(self):
-        self.assertEqual(self.saxon.receive_damage(
-            45), 'A Saxon has received 45 points of damage')
+        self.assertEqual(self.saxon.receive_damage(45), 'A Saxon has received 45 points of damage')
 
     def testReceiveDamageString10(self):
-        self.assertEqual(self.saxon.receive_damage(
-            10), 'A Saxon has received 10 points of damage')
+        self.assertEqual(self.saxon.receive_damage(10), 'A Saxon has received 10 points of damage')
 
     def testReceiveDamageStringDied(self):
-        self.assertEqual(self.saxon.receive_damage(self.health),
-                         'A Saxon has died in combat')
+        self.assertEqual(self.saxon.receive_damage(self.health), 'A Saxon has died in combat')
 
 
 if __name__ == '__main__':
