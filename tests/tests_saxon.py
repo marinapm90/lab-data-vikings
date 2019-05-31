@@ -1,6 +1,7 @@
 import unittest
-from vikingsClases import Saxon
 from inspect import signature
+
+from lab_vikings.vikings_clases import Saxon
 
 
 class TestSaxon(unittest.TestCase):

@@ -1,6 +1,7 @@
 import unittest
-from vikingsClases import Soldier
 from inspect import signature
+
+from lab_vikings.vikings_clases import Soldier
 
 
 class TestSoldier(unittest.TestCase):
@@ -62,4 +63,4 @@ class TestSoldier(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    unittest.main()
+    exit(unittest.main())

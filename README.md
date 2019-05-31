@@ -38,14 +38,9 @@ Best way to know how our code is doing is to work with tests. To test the `vikin
 To run the battery of tests you must enter the following command line through the terminal.
 
 ```
-% > python3 <FILE-NAME>.py -v
+%> make tests
 ```
 
-To run a single test you must enter the following command line through the terminal.
-
-```
-% > python3 <FILE-NAME>.py -v -k <TEST-NAME>
-```
 
 ### Correct Test
 
@@ -136,7 +131,7 @@ class War:
 
 ### Soldier
 
-Modify the `Soldier` constructor function and add 2 methods to its prototype: `attack()`, and `receiveDamage()`.
+Modify the `Soldier` constructor function and add 2 methods to its prototype: `attack()`, and `receive_damage()`.
 
 #### constructor function
 
@@ -150,7 +145,7 @@ Modify the `Soldier` constructor function and add 2 methods to its prototype: `a
 - should receive **0 arguments**
 - should return **the `strength` property of the `Soldier`**
 
-#### `receiveDamage()` method
+#### `receive_damage()` method
 
 - should be a function
 - should receive **1 argument** (the damage)
@@ -161,9 +156,9 @@ Modify the `Soldier` constructor function and add 2 methods to its prototype: `a
 
 ### Viking
 
-A `Viking` is a `Soldier` with an additional property, their `name`. They also have a different `receiveDamage()` method and new method, `battleCry()`.
+A `Viking` is a `Soldier` with an additional property, their `name`. They also have a different `receive_damage()` method and new method, `battleCry()`.
 
-Modify the `Viking` constructor function, have it inherit from `Soldier`, reimplement the `receiveDamage()` method for `Viking`, and add a new `battleCry()` method.
+Modify the `Viking` constructor function, have it inherit from `Soldier`, reimplement the `receive_damage()` method for `Viking`, and add a new `battleCry()` method.
 
 #### inheritance
 
@@ -184,7 +179,7 @@ Modify the `Viking` constructor function, have it inherit from `Soldier`, reimpl
 - should receive **0 arguments**
 - should return **the `strength` property of the `Viking`**
 
-#### `receiveDamage()` method
+#### `receive_damage()` method
 
 (This method needs to be **reimplemented** for `Viking` because the `Viking` version needs to have different return values.)
 
@@ -194,7 +189,7 @@ Modify the `Viking` constructor function, have it inherit from `Soldier`, reimpl
 - **if the `Viking` is still alive**, it should return **"NAME has received DAMAGE points of damage"**
 - **if the `Viking` dies**, it should return **"NAME has died in act of combat"**
 
-#### `battleCry()` method
+#### `battle_cry()` method
 
 [Learn more about battle cries](http://www.artofmanliness.com/2015/06/08/battle-cries/).
 
@@ -206,9 +201,9 @@ Modify the `Viking` constructor function, have it inherit from `Soldier`, reimpl
 
 ### Saxon
 
-A `Saxon` is a weaker kind of `Soldier`. Unlike a `Viking`, a `Saxon` has no name. Their `receiveDamage()` method will also be different than the original `Soldier` version.
+A `Saxon` is a weaker kind of `Soldier`. Unlike a `Viking`, a `Saxon` has no name. Their `receive_damage()` method will also be different than the original `Soldier` version.
 
-Modify the `Saxon`, constructor function, have it inherit from `Soldier` and reimplement the `receiveDamage()` method for `Saxon`.
+Modify the `Saxon`, constructor function, have it inherit from `Soldier` and reimplement the `receive_damage()` method for `Saxon`.
 
 #### inheritance
 
@@ -228,7 +223,7 @@ Modify the `Saxon`, constructor function, have it inherit from `Soldier` and rei
 - should receive **0 arguments**
 - should return **the `strength` property of the `Saxon`**
 
-#### `receiveDamage()` method
+#### `receive_damage()` method
 
 (This method needs to be **reimplemented** for `Saxon` because the `Saxon` version needs to have different return values.)
 
@@ -246,57 +241,57 @@ Now we get to the good stuff: WAR! Our `War` constructor function will allow us 
 
 Modify the `War` constructor and add 5 methods to its prototype:
 
-- `addViking()`
-- `addSaxon()`
-- `vikingAttack()`
-- `saxonAttack()`
-- `showStatus()`
+- `add_viking()`
+- `add_saxon()`
+- `viking_attack()`
+- `saxon_attack()`
+- `show_status()`
 
 #### constructor function
 
 When we first create a `War`, the armies should be empty. We will add soldiers to the armies later.
 
 - should receive **0 arguments**
-- should assign an empty array to the **`vikingArmy` property**
-- should assign an empty array to the **`saxonArmy` property**
+- should assign an empty array to the **`viking_army` property**
+- should assign an empty array to the **`saxon_army` property**
 
-#### `addViking()` method
+#### `add_viking()` method
 
-Adds 1 `Viking` to the `vikingArmy`. If you want a 10 `Viking` army, you need to call this 10 times.
+Adds 1 `Viking` to the `viking_army`. If you want a 10 `Viking` army, you need to call this 10 times.
 
 - should be a function
 - should receive **1 argument** (a `Viking` object)
 - should add the received `Viking` to the army
 - **shouldn't return** anything
 
-#### `addSaxon()` method
+#### `add_saxon()` method
 
-The `Saxon` version of `addViking()`.
+The `Saxon` version of `add_viking()`.
 
 - should be a function
 - should receive **1 argument** (a `Saxon` object)
 - should add the received `Saxon` to the army
 - **shouldn't return** anything
 
-#### `vikingAttack()` method
+#### `viking_attack()` method
 
-A `Saxon` (chosen at random) has their `receiveDamage()` method called with the damage equal to the `strength` of a `Viking` (also chosen at random). This should only perform a single attack and the `Saxon` doesn't get to attack back.
+A `Saxon` (chosen at random) has their `receive_damage()` method called with the damage equal to the `strength` of a `Viking` (also chosen at random). This should only perform a single attack and the `Saxon` doesn't get to attack back.
 
 - should be a function
 - should receive **0 arguments**
-- should make a `Saxon` `receiveDamage()` equal to the `strength` of a `Viking`
+- should make a `Saxon` `receive_damage()` equal to the `strength` of a `Viking`
 - should remove dead saxons from the army
-- should return **result of calling `receiveDamage()` of a `Saxon`** with the `strength` of a `Viking`
+- should return **result of calling `receive_damage()` of a `Saxon`** with the `strength` of a `Viking`
 
 #### `saxonAttack()` method
 
-The `Saxon` version of `vikingAttack()`. A `Viking` receives the damage equal to the `strength` of a `Saxon`.
+The `Saxon` version of `viking_attack()`. A `Viking` receives the damage equal to the `strength` of a `Saxon`.
 
 - should be a function
 - should receive **0 arguments**
-- should make a `Viking` `receiveDamage()` equal to the `strength` of a `Saxon`
+- should make a `Viking` `receive_damage()` equal to the `strength` of a `Saxon`
 - should remove dead vikings from the army
-- should return **result of calling `receiveDamage()` of a `Viking`** with the `strength` of a `Saxon`
+- should return **result of calling `receive_damage()` of a `Viking`** with the `strength` of a `Saxon`
 
 #### `showStatus()` method
 

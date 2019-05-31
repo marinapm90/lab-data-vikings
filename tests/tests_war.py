@@ -1,7 +1,5 @@
 import unittest
-from vikingsClases import War
-from vikingsClases import Viking
-from vikingsClases import Saxon
+from lab_vikings.vikings_clases import War, Saxon, Viking
 from inspect import signature
 
 

@@ -1,6 +1,7 @@
 import unittest
-from vikingsClases import Viking
 from inspect import signature
+
+from lab_vikings.vikings_clases import Viking
 
 
 class TestViking(unittest.TestCase):
