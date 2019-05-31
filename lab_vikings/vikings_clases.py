@@ -14,7 +14,7 @@ class Soldier:
     def attack(self):
         return self.strength
 
-    # Método 'receiveDamage' recibe la variable daño ('skadi') la cual afecta a la propiedad 'health'
+    # Método 'receive_damage' recibe la variable daño ('skadi') la cual afecta a la propiedad 'health'
     def receive_damage(self, skadi):
         self.health = self.health - skadi
 
@@ -28,7 +28,7 @@ class Viking(Soldier):
         self.name = name
 
 
-    # Método 'receiveDamage' recibe la variable daño ('skadi') la cual afecta a la propiedad 'health'. Adicionalmente este método devuelve un mensaje en función del estado del vikingo (si 'health' <= 0 es que ha muerto).
+    # Método 'receive_damage' recibe la variable daño ('skadi') la cual afecta a la propiedad 'health'. Adicionalmente este método devuelve un mensaje en función del estado del vikingo (si 'health' <= 0 es que ha muerto).
     def receive_damage(self, skadi):
         self.health = self.health - skadi
         if self.health > 0:
@@ -49,7 +49,7 @@ class Saxon(Soldier):
         super().__init__(health, strength)
 
 
-    # Método 'receiveDamage' recibe la variable daño ('skadi') la cual afecta a la propiedad 'health'. Adicionalmente este método devuelve un mensaje en función del estado del sajón (si 'health' <= 0 es que ha muerto).
+    # Método 'receive_damage' recibe la variable daño ('skadi') la cual afecta a la propiedad 'health'. Adicionalmente este método devuelve un mensaje en función del estado del sajón (si 'health' <= 0 es que ha muerto).
     def receive_damage(self, skadi):
         self.health = self.health - skadi
         if self.health > 0:
@@ -77,11 +77,11 @@ class War:
         self.saxon_army.append(saxon)
 
     # Se crea el método vikingAttack el cual define un ataque vikingo eligiendo de forma aleatoria un "vikingo" y un "sajón" de cada uno de los ejercitos.
-    # Retorna el resultado (mensaje) según se ha definido en el método receiveDamage definido dentro de la clase Viking.
+    # Retorna el resultado (mensaje) según se ha definido en el método receive_damage definido dentro de la clase Viking.
     def viking_attack(self):
         saxons = random.choice(self.saxon_army)
         vikings = random.choice(self.viking_army)
-        r_vikings = saxons.receiveDamage(vikings.strength)
+        r_vikings = saxons.receive_damage(vikings.strength)
         if saxons.health <= 0:
             self.saxon_army.remove(saxons)
         return r_vikings
@@ -90,7 +90,7 @@ class War:
     def saxon_attack(self):
         saxons = random.choice(self.saxon_army)
         vikings = random.choice(self.viking_army)
-        r_saxons = vikings.receiveDamage(saxons.strength)
+        r_saxons = vikings.receive_damage(saxons.strength)
         if vikings.health <= 0:
             self.viking_army.remove(vikings)
         return r_saxons

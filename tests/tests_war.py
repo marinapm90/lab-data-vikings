@@ -79,7 +79,6 @@ class TestWar2(unittest.TestCase):
         self.assertEqual(len(self.war.saxon_army), 0)
 
     def testAddSaxon(self):
-        print(self.war.__dict__)
         self.assertEqual(self.war.viking_attack(), 'A Saxon has died in combat')
 
     def testSaxonAttackIsFunction(self):
@@ -95,25 +94,24 @@ class TestWar2(unittest.TestCase):
 
     def testVikingArmyList(self):
         for i in range(12):
-            if (len(self.war.viking_army) == 0):
+            if not self.war.viking_army:
                 break
             self.war.saxon_attack()
         self.assertEqual(len(self.war.viking_army), 0)
 
     def testReturnOfSaxonAttack(self):
-        self.assertEqual(self.war.saxon_attack(), self.viking.name +
-                         ' has received ' + str(self.saxon.strength) + ' points of damage')
+        self.assertEqual(self.war.saxon_attack(),
+                         f'{self.viking.name} has received {self.saxon.strength} points of damage')
 
     def testShowStatusShouldIsFunction(self):
-        self.assertEqual(callable(self.war.show_status()), True)
+        self.assertTrue(callable(self.war.show_status))
 
     def testShowStatusReceiveNoParams(self):
         self.assertEqual(len(signature(self.war.show_status).parameters), 0)
 
     def testShouldReturnStringVikingsWon(self):
         self.war.viking_attack()
-        self.assertEqual(self.war.show_status(),
-                         'Vikings have won the war of the century!')
+        self.assertEqual(self.war.show_status(), 'Vikings have won the war of the century!')
 
     def testShouldReturnStringSaxonsWon(self):
         for i in range(12):

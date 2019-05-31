@@ -6,12 +6,11 @@ from lab_vikings.vikings_clases import Viking
 
 class TestViking(unittest.TestCase):
 
-    @classmethod
-    def setUp(cls):
-        cls.name = 'Harald'
-        cls.strength = 150
-        cls.health = 300
-        cls.viking = Viking(cls.name, cls.health, cls.strength)
+    def setUp(self):
+        self.name = 'Harald'
+        self.strength = 150
+        self.health = 300
+        self.viking = Viking(self.name, self.health, self.strength)
 
     def testShouldReciveThreeParams(self):
         self.assertEqual(len(signature(Viking).parameters), 3)
@@ -38,27 +37,23 @@ class TestViking(unittest.TestCase):
         self.assertEqual(callable(self.viking.receive_damage), True)
 
     def testReceiveDamageReciveOneParam(self):
-        self.assertEqual(
-            len(signature(self.viking.receive_damage).parameters), 1)
+        self.assertEqual(len(signature(self.viking.receive_damage).parameters), 1)
 
     def testReciveDamageShouldRestHealth(self):
         self.viking.receive_damage(50)
         self.assertEqual(self.viking.health, self.health - 50)
 
     def testReciveDamageShouldReturnString50(self):
-        self.assertEqual(self.viking.receive_damage(50), self.name +
-                         ' has received 50 points of damage')
+        self.assertEqual(self.viking.receive_damage(50), f'{self.name} has received 50 points of damage')
 
     def testReciveDamageShouldReturnString70(self):
-        self.assertEqual(self.viking.receive_damage(70), self.name +
-                         ' has received 70 points of damage')
+        self.assertEqual(self.viking.receive_damage(70), f'{self.name} has received 70 points of damage')
 
     def testReceiveDamageShouldReturnStringDeath(self):
-        self.assertEqual(self.viking.receive_damage(self.health),
-                         self.name + ' has died in act of combat')
+        self.assertEqual(self.viking.receive_damage(self.health), f'{self.name} has died in act of combat')
 
     def testBattleCry(self):
-        self.assertEqual(callable(self.viking.battle_cry), True)
+        self.assertTrue(callable(self.viking.battle_cry))
 
     def testBattleCryReturnString(self):
         self.assertEqual(self.viking.battle_cry(), 'Odin Owns You All!')
