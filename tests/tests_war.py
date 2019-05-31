@@ -5,9 +5,9 @@ from inspect import signature
 
 class TestWar(unittest.TestCase):
 
-    @classmethod
-    def setUp(cls):
-        cls.war = War()
+
+    def setUp(self):
+        self.war = War()
 
     def testWarShouldReciveNoParams(self):
         self.assertEqual(len(signature(War).parameters), 0)
@@ -20,24 +20,24 @@ class TestWar(unittest.TestCase):
 
 
 class TestWar2(unittest.TestCase):
-    @classmethod
-    def setUp(cls):
+
+    def setUp(self):
         def generate_viking():
-            cls.name = 'Harald'
-            cls.strength = 150
-            cls.health = 300
-            return Viking(cls.name, cls.health, cls.strength)
+            self.name = 'Harald'
+            self.strength = 150
+            self.health = 300
+            return Viking(self.name, self.health, self.strength)
 
         def generate_saxon():
-            cls.health = 60
-            cls.strength = 25
-            return Saxon(cls.health, cls.strength)
+            self.health = 60
+            self.strength = 25
+            return Saxon(self.health, self.strength)
 
-        cls.viking = generate_viking()
-        cls.saxon = generate_saxon()
-        cls.war = War()
-        cls.war.add_saxon(cls.saxon)
-        cls.war.add_viking(cls.viking)
+        self.viking = generate_viking()
+        self.saxon = generate_saxon()
+        self.war = War()
+        self.war.add_saxon(self.saxon)
+        self.war.add_viking(self.viking)
 
     def testAddViking(self):
         self.assertEqual(callable(self.war.add_viking), True)
